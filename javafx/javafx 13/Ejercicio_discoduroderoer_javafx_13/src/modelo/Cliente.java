@@ -67,7 +67,7 @@ public class Cliente {
         try {
 
             // Abro la conexion
-            ConexionMySQL conexion = new ConexionMySQL("localhost", "alquiler_vehiculos", "root", "");
+            ConexionMySQL conexion = new ConexionMySQL("localhost", "alquiler_vehiculos", "root", "root");
 
             // realizo la consulta
             conexion.ejecutarConsulta("select * from clientes");

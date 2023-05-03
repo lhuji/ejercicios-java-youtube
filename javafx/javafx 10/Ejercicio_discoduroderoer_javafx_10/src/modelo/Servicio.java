@@ -88,7 +88,7 @@ public class Servicio {
         try {
             
             // Abro la conexion
-            ConexionMySQL conexion = new ConexionMySQL("localhost", "alquiler_vehiculos", "root", "");
+            ConexionMySQL conexion = new ConexionMySQL("localhost", "alquiler_vehiculos", "root", "root");
 
             // Sentencia para introducir un servicio
             String SQL = "INSERT INTO servicios (matricula_vehiculo, nif_cliente, fecha_alquiler, fecha_entrega, total) "

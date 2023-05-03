@@ -45,9 +45,7 @@ public class ConsultarServiciosController implements Initializable {
     @FXML
     private DatePicker dtpFechaFinal;
 
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 

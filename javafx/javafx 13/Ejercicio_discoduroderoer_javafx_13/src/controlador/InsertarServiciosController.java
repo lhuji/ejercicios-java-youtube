@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.io.IOException;
@@ -59,9 +54,7 @@ public class InsertarServiciosController implements Initializable {
     @FXML
     private TextField txtTotal;
 
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -235,32 +228,6 @@ public class InsertarServiciosController implements Initializable {
                     alert.setTitle("Exito");
                     alert.setContentText("Se inserto correctamente");
                     alert.showAndWait();
-
-                    // Lo marco como ocupado
-                    v.setOcupado((short) 1);
-                    // Actualizo el vehiculo
-                    if (v.actualizarOcupado()) {
-                        Alert alertVehiculo = new Alert(Alert.AlertType.INFORMATION);
-                        alertVehiculo.setHeaderText(null);
-                        alertVehiculo.setTitle("Exito");
-                        alertVehiculo.setContentText("El vehiculo se marco como ocupado");
-                        alertVehiculo.showAndWait();
-                        
-                        // Vuelvo a cargar el combobox de vehiculos
-                        ObservableList<Vehiculo> obsVehiculos = v.getVehiculos();
-                        this.cmbVehiculos.setItems(obsVehiculos);
-                        // Borro los datos del vehiculo
-                        this.txtMarcaVeh.setText("");
-                        this.txtKmVeh.setText("");
-                        this.txtDescripcionVeh.setText("");
-                        this.txtPrecioVeh.setText("");
-                    } else {
-                        Alert alertVehiculo = new Alert(Alert.AlertType.ERROR);
-                        alertVehiculo.setHeaderText(null);
-                        alertVehiculo.setTitle("Error");
-                        alertVehiculo.setContentText("El vehiculo no se actualizo correctamente");
-                        alertVehiculo.showAndWait();
-                    }
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);

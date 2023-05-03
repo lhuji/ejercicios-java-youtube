@@ -15,26 +15,16 @@ public class Vehiculo {
     private String marca;
     private int km;
     private int precio;
-    private short ocupado;
 
     public Vehiculo() {
     }
 
-    public Vehiculo(String matricula, String descripcion, String marca, int km, int precio, short ocupado) {
+    public Vehiculo(String matricula, String descripcion, String marca, int km, int precio) {
         this.matricula = matricula;
         this.descripcion = descripcion;
         this.marca = marca;
         this.km = km;
         this.precio = precio;
-        this.ocupado = ocupado;
-    }
-
-    public short getOcupado() {
-        return ocupado;
-    }
-
-    public void setOcupado(short ocupado) {
-        this.ocupado = ocupado;
     }
 
     public String getMatricula() {
@@ -87,10 +77,10 @@ public class Vehiculo {
         try {
 
             // Abro la conexion
-            ConexionMySQL conexion = new ConexionMySQL("localhost", "alquiler_vehiculos", "root", "");
+            ConexionMySQL conexion = new ConexionMySQL("localhost", "alquiler_vehiculos", "root", "root");
 
             // Ejcuto la consulta
-            conexion.ejecutarConsulta("select * from vehiculos where ocupado = 0");
+            conexion.ejecutarConsulta("select * from vehiculos");
 
             ResultSet rs = conexion.getResultSet();
 
@@ -103,10 +93,9 @@ public class Vehiculo {
                 String marca = rs.getString("marca");
                 int km = rs.getInt("kilometros");
                 int precio = rs.getInt("precio");
-                short ocupado = rs.getShort("ocupado");
 
                 // Creo el vehiculo
-                Vehiculo v = new Vehiculo(matricula, descripcion, marca, km, precio, ocupado);
+                Vehiculo v = new Vehiculo(matricula, descripcion, marca, km, precio);
 
                 obs.add(v);
 
@@ -119,25 +108,4 @@ public class Vehiculo {
         }
         return obs;
     }
-
-    public boolean actualizarOcupado() throws SQLException {
-
-        // Abro la conexion
-        ConexionMySQL conexion = new ConexionMySQL("localhost", "alquiler_vehiculos", "root", "");
-
-        // Ejcuto la instruccion
-        int filas = conexion.ejecutarInstruccion("update vehiculos set ocupado = " + ocupado + " "
-                                                    + "where matricula = '" + matricula + "'");
-
-        // Cierro la conexion
-        conexion.cerrarConexion();
-
-        // Si hay una o mas filas significa que se hizo correctamente.
-        if (filas > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 }

@@ -119,7 +119,7 @@ public class Servicio {
     public boolean insertarServicio() throws SQLException {
 
         // Abro la conexion
-        ConexionMySQL conexion = new ConexionMySQL("localhost", "alquiler_vehiculos", "root", "");
+        ConexionMySQL conexion = new ConexionMySQL("localhost", "alquiler_vehiculos", "root", "root");
 
         // Sentencia para introducir un servicio
         String SQL = "INSERT INTO servicios (matricula_vehiculo, nif_cliente, fecha_alquiler, fecha_entrega, total) "
@@ -155,7 +155,7 @@ public class Servicio {
         try {
 
             // Abro la conexion
-            ConexionMySQL conexion = new ConexionMySQL("localhost", "alquiler_vehiculos", "root", "");
+            ConexionMySQL conexion = new ConexionMySQL("localhost", "alquiler_vehiculos", "root", "root");
 
             String SQL = "select v.matricula, v.marca, v.precio, s.fecha_alquiler, s.fecha_entrega, s.total "
                     + "from servicios s, vehiculos v, clientes c "
